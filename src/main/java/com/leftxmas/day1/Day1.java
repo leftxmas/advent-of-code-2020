@@ -17,10 +17,9 @@ class Day1 {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
 
-        File file = PuzzleInputLoader.getFileFromResource("day1.txt");
+        File puzzleInput = PuzzleInputLoader.getFileFromResource("day1.txt");
 
-        List<String> lines;
-        lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+        List<String> lines = Files.readAllLines(puzzleInput.toPath(), StandardCharsets.UTF_8);
 
         int firstNumber = 0;
         int secondNumber = 0;
