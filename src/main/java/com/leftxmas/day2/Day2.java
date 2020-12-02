@@ -8,9 +8,8 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,21 +20,20 @@ public class Day2 {
 
         List<String> lines = Files.readAllLines(puzzleInput.toPath(), StandardCharsets.UTF_8);
 
-        Set<PasswordPolicy> passwordPolicies = new HashSet<>();
         int validPasswordCount = 0;
 
         for (String line : lines) {
-            String[] passwordPolicyInput = line.split(":");
-            String password = passwordPolicyInput[1];
 
-            String[] passwordPolicy = passwordPolicyInput[0].split(" ");
-            char passwordPolicyChar = passwordPolicy[1].charAt(0);
+            StringTokenizer stringTokenizer = new StringTokenizer(line, ":. .-");
 
-            String[] passwordPolicyRange = passwordPolicy[0].split("-");
+            int position1 = Integer.valueOf(stringTokenizer.nextToken());
+            int position2 = Integer.valueOf(stringTokenizer.nextToken());
+            char passwordPolicyChar = stringTokenizer.nextToken().charAt(0);
+            String password = stringTokenizer.nextToken();
 
-            PasswordPolicy passwordPolicy1 = new PasswordPolicy(passwordPolicyChar, Integer.valueOf(passwordPolicyRange[0]), Integer.valueOf(passwordPolicyRange[1]), password.trim());
+            PasswordPolicy passwordPolicy = new PasswordPolicy(passwordPolicyChar, position1, position2, password.trim());
 
-            if (passwordPolicy1.isPasswordValid()) {
+            if (passwordPolicy.isPasswordValid()) {
                 validPasswordCount++;
             }
         }
@@ -43,7 +41,6 @@ public class Day2 {
         System.out.println(validPasswordCount);
 
     }
-
 
 }
 
