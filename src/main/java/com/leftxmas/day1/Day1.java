@@ -17,8 +17,6 @@ class Day1 {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
 
-        Day1 day1 = new Day1();
-
         File file = PuzzleInputLoader.getFileFromResource("day1.txt");
 
         List<String> lines;
