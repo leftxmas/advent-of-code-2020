@@ -83,11 +83,13 @@ class PasswordPolicy {
                 .filter(i -> this.password.charAt(i) == this.character)
                 .toArray()).boxed().collect(Collectors.toList());
 
-        boolean validPassword = false;
+        boolean validPassword = true;
         if (positionsForCharacters.contains(this.min) && positionsForCharacters.contains(this.max)) {
             validPassword = false;
         } else if (positionsForCharacters.contains(this.min) || positionsForCharacters.contains(this.max)) {
             validPassword = true;
+        } else {
+            validPassword = false;
         }
 
         return validPassword;
