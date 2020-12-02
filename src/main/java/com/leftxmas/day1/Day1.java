@@ -1,4 +1,4 @@
-package com.leftxmas;
+package com.leftxmas.day1;
 
 import java.io.File;
 import java.io.IOException;
